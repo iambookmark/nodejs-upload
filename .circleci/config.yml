@@ -59,13 +59,10 @@ jobs:
               -e CATTLE_SECRET_KEY="$CATTLE_SECRET_KEY" \
               -e CATTLE_URL="$CATTLE_URL" \
               etlweather/gaucho:latest upgrade $RANCHER_EXAMPLE_NODEJS
-              --imageUuid 'docker:iambookmark/my_upload:latest' \
-              --batch_size 1 --start_first \
-              --auto_complete --timeout 1200\
+              --start_first --imageUuid 'docker:iambookmark/my_upload:latest' \
+              --auto_complete --batch_size 1 \
+              --timeout 600\
               /
 
       # run tests!
       - run: echo done
-
-
-
