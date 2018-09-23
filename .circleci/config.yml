@@ -48,8 +48,8 @@ jobs:
       - run:
           name: "Push to docker hub"
           command:
-            docker push iambookmark/my_upload:latest .
-            # docker push iambookmark/my_upload:${CIRCLE_SHA1} .
+            docker push iambookmark/my_upload:latest
+            # docker push iambookmark/my_upload:${CIRCLE_SHA1}
 
       # run tests!
       - run: echo done
