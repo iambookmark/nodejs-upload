@@ -33,6 +33,18 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: npm test
+      - setup_remote_docker
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - run:
+          name: "Build docker image and push to docker hub"
+          command:
+            docker build -t iambookmark/my_upload:latest .
+            docker build -t iambookmark/my_upload:${CIRCLE_SHA1} .
+            docker push iambookmark/my_upload:latest .
+            docker push iambookmark/my_upload:${CIRCLE_SHA1} .
+
       # run tests!
       - run: echo done
 
