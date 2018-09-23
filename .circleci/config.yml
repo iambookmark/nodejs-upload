@@ -38,12 +38,16 @@ jobs:
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - run:
-          name: "Build docker image and push to docker hub"
+          name: "Build docker image"
           command:
             docker build -t iambookmark/my_upload:latest .
-            docker build -t iambookmark/my_upload:${CIRCLE_SHA1} .
+            # docker build -t iambookmark/my_upload:${CIRCLE_SHA1} .
+
+      - run:
+          name: "Push to docker hub"
+          command:
             docker push iambookmark/my_upload:latest .
-            docker push iambookmark/my_upload:${CIRCLE_SHA1} .
+            # docker push iambookmark/my_upload:${CIRCLE_SHA1} .
 
       # run tests!
       - run: echo done
