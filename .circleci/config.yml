@@ -61,7 +61,7 @@ jobs:
               etlweather/gaucho:latest upgrade $RANCHER_EXAMPLE_NODEJS
               --imageUuid 'docker:iambookmark/my_upload:latest' \
               --batch_size 3 --start_first \
-              --auto_complete --timeout 600\
+              --auto_complete --timeout 1200\
               /
 
       # run tests!
