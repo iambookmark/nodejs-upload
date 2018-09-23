@@ -41,15 +41,15 @@ jobs:
 
       - run:
           name: "Build docker image"
-          command:
+          command: |
             docker build -t iambookmark/my_upload:latest .
-            # docker build -t iambookmark/my_upload:${CIRCLE_SHA1} .
+            docker build -t iambookmark/my_upload:${CIRCLE_SHA1} .
 
       - run:
           name: "Push to docker hub"
-          command:
+          command: |
             docker push iambookmark/my_upload:latest
-            # docker push iambookmark/my_upload:${CIRCLE_SHA1}
+            docker push iambookmark/my_upload:${CIRCLE_SHA1}
 
       - run:
           name: "Call to rancher to deploy"
@@ -58,7 +58,7 @@ jobs:
               -e CATTLE_ACCESS_KEY="$CATTLE_ACCESS_KEY" \
               -e CATTLE_SECRET_KEY="$CATTLE_SECRET_KEY" \
               -e CATTLE_URL="$CATTLE_URL" \
-              etlweather/gaucho upgrade $RANCHER_EXAMPLE_NODEJS
+              etlweather/gaucho:latest upgrade $RANCHER_EXAMPLE_NODEJS
               --imageUuid 'docker:iambookmark/my_upload:latest' \
               --batch_size 3 --start_first \
               --auto_complete --timeout 600\
