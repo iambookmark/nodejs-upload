@@ -20,5 +20,6 @@ Type these commands in the terminal inside the folder where you cloned the repos
 ## Resources
 - https://github.com/expressjs/multer
 
+## Image
 ---
 <img src='example.gif'/>
