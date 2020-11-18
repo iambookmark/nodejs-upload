@@ -7,7 +7,7 @@ This example allows for uploading a file by:
 - renaming the file with a datestamp
 - limits file size to 1.5 MB (can be changed)
 
-##TODO
+## TODO
 - validation of non-conform files
 	- currently allows uploading any kind of file
 
